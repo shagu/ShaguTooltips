@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: |cff33ffccShagu|cffffffffTooltips
+## Author: Eric (Shagu) Mauser, 2016
+## Notes: Changes the appearance and content of your tooltips
+## Version: 1.0
+ShaguTooltips.lua
