@@ -1,6 +1,18 @@
-GameTooltip:SetBackdrop({ 
-  bgFile = "Interface\\AddOns\\ShaguTooltips\\img\\bg", tile = true, tileSize = 8,
-  edgeFile = "Interface\\AddOns\\ShaguTooltips\\img\\border", edgeSize = 16, 
+-- detect current addon path
+local path
+local tocs = { "", "-master", "-tbc", "-wotlk" }
+for _, name in pairs(tocs) do
+  local current = string.format("ShaguTooltips%s", name)
+  local _, title = GetAddOnInfo(current)
+  if title then
+    path = "Interface\\AddOns\\" .. current
+    break
+  end
+end
+
+GameTooltip:SetBackdrop({
+  bgFile = path .. "\\img\\bg", tile = true, tileSize = 8,
+  edgeFile = path .. "\\img\\border", edgeSize = 16,
   insets = {left = 0, right = 0, top = 0, bottom = 0}, })
 
 GameTooltipStatusBar:SetHeight(6)
@@ -11,7 +23,7 @@ GameTooltipStatusBar:SetBackdropColor(0, 0, 0, 1)
 
 GameTooltipStatusBar:SetPoint("BOTTOMLEFT", GameTooltip, "TOPLEFT", 1, 2)
 GameTooltipStatusBar:SetPoint("BOTTOMRIGHT", GameTooltip, "TOPRIGHT", -1, 2)
-GameTooltipStatusBar:SetStatusBarTexture("Interface\\AddOns\\ShaguTooltips\\img\\normTex")
+GameTooltipStatusBar:SetStatusBarTexture(path .. "\\img\\normTex")
 
 function round(input, places)
   if not places then places = 0 end

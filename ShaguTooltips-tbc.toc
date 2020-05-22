@@ -1,4 +1,4 @@
-## Interface: 11200
+## Interface: 20400
 ## Title: |cff33ffccShagu|cffffffffTooltips
 ## Author: Shagu
 ## Notes: Changes the appearance and content of your tooltips
