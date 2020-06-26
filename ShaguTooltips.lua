@@ -80,7 +80,7 @@ ShaguUITooltipEvent:SetScript("OnEvent", function()
     local _, targetClass = UnitClass("mouseovertarget")
     local targetReaction = UnitReaction("player","mouseovertarget")
     local _, class = UnitClass("mouseover")
-    local guild = GetGuildInfo("mouseover")
+    local guild, rankstr, rankid = GetGuildInfo("mouseover")
     local reaction = UnitReaction("player", "mouseover")
     local pvptitle = gsub(pvpname," "..name, "", 1)
 
@@ -102,7 +102,10 @@ ShaguUITooltipEvent:SetScript("OnEvent", function()
     end
 
     if guild then
-      GameTooltip:AddLine("<" .. guild .. ">", 0.3, 1, 0.5)
+      local rank, lead = "", ""
+      if rankstr then rank = " |cffaaaaaa(" .. rankstr .. ")"  end
+      if rankid and rankid == 0 then lead = "|cffffcc00*|r" end
+      GameTooltip:AddLine("<" .. guild .. ">" .. lead .. rank, 0.3, 1, 0.5)
     end
 
     if target and ( targetClass or targetReaction ) then
